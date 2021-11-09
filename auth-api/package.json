@@ -2,6 +2,8 @@
   "name": "auth-api",
   "version": "1.0.0",
   "main": "index.js",
+  "repository": "https://github.com/SamuelsjO/ms-microservice-Sales.git",
+  "author": "Samuel Jose de Souza Oliveira <samucagm@rocketmail.com>",
   "license": "MIT",
   "type": "module",
   "scripts": {
