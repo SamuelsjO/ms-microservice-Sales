@@ -1,7 +1,13 @@
-FROM node:14
+FROM node:alpine
+
 WORKDIR .
+
 COPY package*.json ./
-RUN yarn 
+
+RUN npm install
+
 COPY . .
+
 EXPOSE 8080
-CMD ["node", "app.ts"]
+
+CMD [ "node" , "dist/server.js" ]

@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "type": "module",
   "scripts": {
-    "start": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
-    "build": "tsc",
+    "dev:start": "ts-node-dev --transpile-only --ignore-watch node_modules dist/server.js",
+    "start": "node dist/server.js",
+    "tsc": "tsc -p tsconfig.json",
     "dev": "nodemon src/server.ts"
   },
   "dependencies": {

@@ -2,12 +2,12 @@
   "name": "sales-api",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "",
-  "author": "Samuel Jose de Souza Oliveira <samucagm@rocketmail.com>",
   "license": "MIT",
-  "type": "module",
   "scripts": {
-    "start": "nodemon app.ts"
+    "dev:start": "ts-node-dev --transpile-only --ignore-watch node_modules dist/server.js",
+    "start": "node dist/server.js",
+    "tsc": "tsc -p tsconfig.json",
+    "dev": "nodemon src/server.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
