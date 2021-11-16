@@ -1,9 +1,7 @@
 import app from './app';
+import './database';
 
+const PORT = 3333;
 
-const env = process.env;
-const PORT = env.PORT || 8080;
+app.listen(PORT, () => console.log('Server Running...'));
 
-app.listen(PORT, () => {
-    console.info(`Server started successfully at port ${PORT}`)
-})

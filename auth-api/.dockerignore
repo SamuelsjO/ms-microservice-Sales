@@ -1,0 +1,9 @@
+.vscode
+node_modules
+.editorconfig
+.eslintignore
+.eslintrc.json
+Dockerfile
+prettier.config.js
+README.md
+yarn.lock
