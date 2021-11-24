@@ -11,6 +11,14 @@ export default class BaseResponse {
     return res.status(201).json(payload);
   }
 
+  public async respondForbiden(res: Response, payload: Record<string, any>): Promise<Response<any, Record<string, any>>> {
+    return res.status(403).json(payload);
+  }
+
+  public async respondUnAuthrorized(res: Response, payload: Record<string, any>): Promise<Response<any, Record<string, any>>> {
+    return res.status(401).json(payload);
+  }
+
   public async respondError(res: Response, err: AppError | AppValidationError): Promise<Response<any, Record<string, any>>> {
     console.log(err);
     const status = err.statusCode ?? 500;

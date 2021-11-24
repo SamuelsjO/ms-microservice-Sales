@@ -1,4 +1,4 @@
-require('dotenv').config({ path: process.env.NODE_ENV === 'development' ? 'dev.env' : '' }).parsed;
+require('dotenv').config();
 
 module.exports = {
   type: process.env.PGDB_TYPE,
@@ -7,7 +7,7 @@ module.exports = {
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DB,
-  synchronize: false,
+  synchronize: true,
   logging: false,
   entities: [process.env.DB_ENTITIES || './dist/models/*.js'],
   migrations: [process.env.DB_MIGRATIONS || './dist/database/migrations/**/*.js'],

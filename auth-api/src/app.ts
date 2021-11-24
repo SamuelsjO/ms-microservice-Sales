@@ -5,9 +5,11 @@ import express, { NextFunction, Request, RequestHandler, Response } from 'expres
 import 'reflect-metadata';
 import AppError from './errors/AppError';
 import AppValidationError from './errors/AppValidationError';
-import CustomError from './errors/CustomErros';
+import CustomError from './errors/CustomError';
 
-config({ path: process.env.NODE_ENV === 'development' ? 'dev.env' : '' });
+import routes from './routes';
+
+config();
 
 const app = express();
 
@@ -15,6 +17,7 @@ app.use(cors());
 app.use(express.json() as RequestHandler);
 app.use(express.urlencoded({ extended: true }));
 
+app.use('/api/v1', routes);
 app.use((err: CustomError, request: Request, response: Response, _: NextFunction) => {
   if (err instanceof AppValidationError) {
     return response.status(err.statusCode).json({

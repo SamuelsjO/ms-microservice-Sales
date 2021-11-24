@@ -14,7 +14,7 @@ services:
     ports:
       - '${DATABASE_HOST}:${POSTGRES_PORT}:5432'
     networks:
-      - network_auth
+      - network_users
 
   auth-api:
     build:
@@ -33,11 +33,11 @@ services:
     ports:
       - '${ENV_SERVER_PORT}:${ENV_SERVER_PORT}'
     networks:
-      - network_auth
+      - network_users
     restart: 'always'
     env_file:
       - ./.env
 
 networks:
-  network_auth:
-    name: network_auth
+  network_users:
+    name: network_users

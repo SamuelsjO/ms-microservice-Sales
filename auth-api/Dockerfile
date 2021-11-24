@@ -1,6 +1,6 @@
 FROM node:alpine
 
-WORKDIR .
+WORKDIR /auth-api
 
 COPY package*.json ./
 
@@ -8,6 +8,6 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 8080
+EXPOSE 3333
 
-CMD [ "yarn" , "dev" ]
+CMD [ "npm" , "run",  "dev" ]

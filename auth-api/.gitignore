@@ -1,5 +1,4 @@
 node_modules
 dist
-certs
 yarn.lock
 package-lock.json

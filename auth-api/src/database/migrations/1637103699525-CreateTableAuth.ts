@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class CreateTableAuth1637103699525 implements MigrationInterface {
+export class CreateTableUsers1637103699525 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
-    console.log('aqui na table Auth');
     await queryRunner.query(
-      'CREATE TABLE IF NOT EXISTS Auth (' +
+      'CREATE TABLE IF NOT EXISTS Users (' +
         ' id int NOT NULL GENERATED ALWAYS AS IDENTITY ,' +
+        ' name varchar(100) NOT NULL ,' +
         ' email varchar(100) NOT NULL ,' +
         ' password varchar(100) ' +
         ');',
@@ -13,6 +13,6 @@ export class CreateTableAuth1637103699525 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('Auth');
+    await queryRunner.dropTable('Users');
   }
 }
