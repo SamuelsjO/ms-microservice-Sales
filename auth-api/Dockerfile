@@ -2,11 +2,10 @@ FROM node:alpine
 
 WORKDIR /auth-api
 
-COPY package*.json ./
+COPY ./package.json ./
 
 RUN npm install
 
-COPY . .
 
 EXPOSE 3333
 

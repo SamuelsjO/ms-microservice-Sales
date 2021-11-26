@@ -13,9 +13,6 @@ export default class FindUsersService implements IFindUsersService {
   }
   public async execute({ email }: RequestUsersDTO): Promise<Users> {
     const users = await this.findaUsersRepositoy.findUsers({ email });
-
-    console.log('passa aqui')
-
     if (!users) {
       throw new AppValidationError(authMessagesRelated.errorFindUser);
     }

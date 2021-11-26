@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:server": "NODE_ENV=development ts-node-dev --inspect --transpileOnly --ignore-watch node_modules --no-notify src/server.ts",
+    "dev:server": "ts-node-dev --inspect --transpileOnly --ignore-watch node_modules --no-notify src/server.ts",
     "build": "tsc -p tsconfig.json",
     "dev": "nodemon src/server.ts",
     "lint": "eslint './src/**/*.ts'",
@@ -19,11 +19,9 @@
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^8.5.1",
-    "mysql": "^2.18.1",
     "pg": "^8.7.1",
     "postgres": "^1.0.2",
     "typeorm": "^0.2.38",
-    "yamljs": "^0.3.0",
     "yup": "^0.29.3"
   },
   "devDependencies": {

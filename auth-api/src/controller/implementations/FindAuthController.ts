@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import BaseController from '../BaseController';
 import AppValidationError from '../../errors/AppValidationError';
 import IFindUsersService from '../../services/IFindAuthService';
+import { RequestUsersDTO } from '../../models/dto/RequestAuthDTO';
 
 export default class FindUsersController extends BaseController {
   private findUsersService: IFindUsersService;
@@ -12,8 +13,7 @@ export default class FindUsersController extends BaseController {
   }
   protected async executeImpl(req: Request, res: Response<any, Record<string, any>>): Promise<Response<any, Record<string, any>>> {
     try {
-      const { email } = req.body;
-      console.log(email);
+      const { email }: RequestUsersDTO = req.body;
       const users = await this.findUsersService.execute({ email });
 
       return this.respondSuccess(res, users);
