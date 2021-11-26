@@ -6,6 +6,7 @@ import Users from '../../models/Users';
 import AppValidationError from '../../errors/AppValidationError';
 import IUsersService from '../IUsersServices';
 import { IFindUsersRepository } from '../../repositories/IFindUsersRepository';
+import { hashSync } from 'bcrypt';
 
 export default class UsersService implements IUsersService {
   private usersRepository: IUsersRepository;
@@ -17,9 +18,9 @@ export default class UsersService implements IUsersService {
   }
   public async execute(users: RequestUsersDTO): Promise<Users> {
     try {
-      console.log('users :>> ', users.password);
-      const { email }: RequestUsersDTO = users;
+      if (users.password) users.password = hashSync(users.password, 10);
 
+      const { email } = users;
       const userExist = await this.findUsersRepository.findUsers({ email });
 
       if (userExist) {
