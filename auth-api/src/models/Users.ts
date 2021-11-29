@@ -1,5 +1,5 @@
-import { BeforeInsert, BeforeUpdate, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import bcrypt from 'bcrypt';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+
 @Entity({ name: 'users' })
 export default class Users {
   @PrimaryGeneratedColumn('increment')
