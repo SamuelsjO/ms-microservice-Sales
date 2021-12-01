@@ -4,6 +4,7 @@ import IFindUsersService from '../../services/IFindAuthService';
 import BaseController from '../BaseController';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+
 export default class GetAcessTokenController extends BaseController {
   private findUsersService: IFindUsersService;
 
@@ -27,7 +28,7 @@ export default class GetAcessTokenController extends BaseController {
         return res.sendStatus(401);
       }
 
-      const token = jwt.sign({ id: users.id }, 'secret', { expiresIn: '1d' });
+      const token = jwt.sign({ id: users.id }, process.env.API_SECRET, { expiresIn: '1d' });
 
       delete users.password;
 

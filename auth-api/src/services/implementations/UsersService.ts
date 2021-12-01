@@ -33,7 +33,7 @@ export default class UsersService implements IUsersService {
       if (error instanceof AppError) {
         throw new AppError(error.message);
       }
-      throw new AppValidationError(authMessagesRelated.errorSaveUser);
+      throw new AppValidationError(authMessagesRelated.errorUserExists);
     }
   }
 }
