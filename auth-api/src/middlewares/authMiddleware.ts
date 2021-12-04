@@ -14,12 +14,14 @@ const authMiddeware = async (req: Request, resp: Response, next: NextFunction) =
   }
 
   const token = authorization.replace('Bearer', '').trim();
+  
 
   try {
     const data = jwt.verify(token, process.env.API_SECRET);
 
     const { id } = data as TokenPayload;
 
+   
     req.userId = id;
     return next();
   } catch {

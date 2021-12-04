@@ -11,7 +11,7 @@ export default class FindUsersService implements IFindUsersService {
   constructor(aFindUsersRepository: IFindUsersRepository) {
     this.findaUsersRepositoy = aFindUsersRepository;
   }
-  public async execute({ email, password }: RequestUsersDTO): Promise<Users> {
+  public async execute({ email }: RequestUsersDTO): Promise<Users> {
     const users = await this.findaUsersRepositoy.findUsers({ email });
     if (!users) {
       throw new AppValidationError(authMessagesRelated.errorFindUser);
