@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/status")
+@RequestMapping("/api")
 public class StatusController {
 
-	@GetMapping("status")
+	@GetMapping("/status")
 	public ResponseEntity<HashMap<String, Object>> getApiStatus(){
 		var response = new HashMap<String, Object>();
 		response.put("service", "Product-api");
