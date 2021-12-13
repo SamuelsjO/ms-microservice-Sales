@@ -21,9 +21,8 @@ public class SupplierServicesImpl implements SupplierInterfaces {
 	private SupplierRepository repository;
 
 	@Override
-	public Optional<Supplier> findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Supplier findById(Integer id) {
+		return repository.findById(id).orElseThrow(() -> new ValidationException("There's no supplier for the given ID"));
 	}
 
 	@Override

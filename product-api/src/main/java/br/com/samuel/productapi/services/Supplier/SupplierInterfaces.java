@@ -8,8 +8,7 @@ import br.com.samuel.productapi.models.Supplier;
 
 public interface SupplierInterfaces {
 
-	Optional<Supplier> findById(Integer id);
-	
-	
+	Supplier findById(Integer id);
+
 	SupplierResponse save(SupplierRequest request);
 }

@@ -2,6 +2,7 @@ package br.com.samuel.productapi.services.impl.category;
 
 import java.util.Optional;
 
+import br.com.samuel.productapi.models.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +22,9 @@ public class CategoryServicesImpl implements CategoryInterfaces {
 	private CategoryRepository repository;
 
 	@Override
-	public Optional<Category> findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Category findById(Integer id) {
+       return repository.findById(id).orElseThrow(() -> new ValidationException("There's no category for the given ID"));
+
 	}
 
 	@Override

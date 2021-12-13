@@ -1,6 +1,5 @@
 package br.com.samuel.productapi.models;
 
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,12 +8,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
 
-import br.com.samuel.productapi.dtos.category.CategoryRequest;
 import br.com.samuel.productapi.dtos.supplier.SupplierRequest;
 
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "SUPPLIER")
 public class Supplier {
@@ -31,60 +34,8 @@ public class Supplier {
 		var supplier = new Supplier();
 		BeanUtils.copyProperties(request, supplier);
 		return supplier;
-		
-	}
 
-	public Supplier() {
-		super();
 	}
-
-	public Supplier(Integer id, String name) {
-		super();
-		this.id = id;
-		this.name = name;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, name);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Supplier other = (Supplier) obj;
-		return Objects.equals(id, other.id) && Objects.equals(name, other.name);
-	}
-
-	@Override
-	public String toString() {
-		return "Supplier [id=" + id + ", name=" + name + "]";
-	}
-	
-	
-	
-	
 }
 
 
