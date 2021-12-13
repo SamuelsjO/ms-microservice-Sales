@@ -19,9 +19,6 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// app.use(express.json() as RequestHandler);
-// app.use(express.urlencoded({ extended: true }));
-
 app.use('/api/v1', routes);
 app.use((err: CustomError, request: Request, response: Response, _: NextFunction) => {
   if (err instanceof AppValidationError) {

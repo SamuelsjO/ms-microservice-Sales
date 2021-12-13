@@ -1,4 +1,4 @@
-package br.com.samuel.productapi.dtos;
+package br.com.samuel.productapi.dtos.category;
 
 import java.util.Objects;
 

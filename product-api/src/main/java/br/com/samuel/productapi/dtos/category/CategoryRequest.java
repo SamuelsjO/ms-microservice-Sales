@@ -1,11 +1,11 @@
-package br.com.samuel.productapi.dtos;
+package br.com.samuel.productapi.dtos.category;
 
 
 import java.util.Objects;
 
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+@Data
 public class CategoryRequest {
 
     private String description;

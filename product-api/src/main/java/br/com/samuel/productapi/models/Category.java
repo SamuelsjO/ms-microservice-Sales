@@ -11,8 +11,9 @@ import javax.persistence.Table;
 
 import org.springframework.beans.BeanUtils;
 
-import br.com.samuel.productapi.dtos.CategoryRequest;
-
+import br.com.samuel.productapi.dtos.category.CategoryRequest;
+import lombok.Data;
+@Data
 @Entity
 @Table(name = "CATEGORY")
 public class Category {
@@ -51,13 +52,13 @@ public class Category {
 		this.id = id;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
+//	public String getDescription() {
+//		return description;
+//	}
+//
+//	public void setDescription(String description) {
+//		this.description = description;
+//	}
 
 	@Override
 	public int hashCode() {

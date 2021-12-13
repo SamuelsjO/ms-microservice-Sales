@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.samuel.productapi.dtos.CategoryRequest;
-import br.com.samuel.productapi.dtos.CategoryResponse;
+import br.com.samuel.productapi.dtos.category.CategoryRequest;
+import br.com.samuel.productapi.dtos.category.CategoryResponse;
 import br.com.samuel.productapi.services.category.CategoryInterfaces;
 
 @RestController

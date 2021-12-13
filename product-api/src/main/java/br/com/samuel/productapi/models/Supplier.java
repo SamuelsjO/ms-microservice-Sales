@@ -9,6 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.BeanUtils;
+
+import br.com.samuel.productapi.dtos.category.CategoryRequest;
+import br.com.samuel.productapi.dtos.supplier.SupplierRequest;
+
 
 @Entity
 @Table(name = "SUPPLIER")
@@ -20,6 +25,14 @@ public class Supplier {
 	
 	@Column(name = "NAME", nullable = false)
 	private String name;
+	
+	
+	public static Supplier of(SupplierRequest request) {
+		var supplier = new Supplier();
+		BeanUtils.copyProperties(request, supplier);
+		return supplier;
+		
+	}
 
 	public Supplier() {
 		super();
@@ -68,6 +81,8 @@ public class Supplier {
 	public String toString() {
 		return "Supplier [id=" + id + ", name=" + name + "]";
 	}
+	
+	
 	
 	
 }
