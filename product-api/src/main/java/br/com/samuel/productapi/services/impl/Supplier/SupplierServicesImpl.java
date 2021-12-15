@@ -1,7 +1,5 @@
 package br.com.samuel.productapi.services.impl.Supplier;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +20,7 @@ public class SupplierServicesImpl implements SupplierInterfaces {
 
 	@Override
 	public Supplier findById(Integer id) {
+		validateInformedId(id);
 		return repository.findById(id).orElseThrow(() -> new ValidationException("There's no supplier for the given ID"));
 	}
 
@@ -29,13 +28,18 @@ public class SupplierServicesImpl implements SupplierInterfaces {
 	public SupplierResponse save(SupplierRequest request) {
 		validateSupplierNameInformed(request);
 		var supplier = repository.save(Supplier.of(request));
-
 		return SupplierResponse.of(supplier);
 	}
 
 	private void validateSupplierNameInformed(SupplierRequest request) {
 		if (isEmpty(request.getName())) {
 			throw new ValidationException("Supplier not informed");
+		}
+	}
+
+	private void validateInformedId(Integer id) {
+		if (isEmpty(id)) {
+			throw new ValidationException("The supplier ID must be informed.");
 		}
 	}
 }
