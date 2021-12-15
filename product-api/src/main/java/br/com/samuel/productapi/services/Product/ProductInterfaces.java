@@ -8,7 +8,7 @@ import br.com.samuel.productapi.models.Product;
 
 public interface ProductInterfaces {
 
-	Product findByName(String name);
+	Product findById(Integer id);
 
 	ProductResponse save(ProductRequest request);
 }

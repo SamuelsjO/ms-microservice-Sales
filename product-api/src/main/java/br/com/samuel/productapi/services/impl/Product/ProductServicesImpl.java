@@ -28,8 +28,8 @@ public class ProductServicesImpl implements ProductInterfaces {
 	private CategoryInterfaces categoryInterfaces;
 
 	@Override
-	public Product findByName(String name) {
-		return null;
+	public Product findById(Integer id) {
+		return repository.findById(id).orElseThrow(() -> new ValidationException("There's no product for the given ID"));
 	}
 
 	@Override

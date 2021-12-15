@@ -2,7 +2,6 @@ package br.com.samuel.productapi.dtos.supplier;
 
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
-
 import br.com.samuel.productapi.models.Supplier;
 
 @Data

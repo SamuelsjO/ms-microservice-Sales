@@ -1,8 +1,5 @@
 package br.com.samuel.productapi.services.impl.category;
 
-import java.util.Optional;
-
-import br.com.samuel.productapi.models.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
