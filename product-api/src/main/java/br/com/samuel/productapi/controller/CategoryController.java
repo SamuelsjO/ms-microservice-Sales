@@ -8,6 +8,8 @@ import br.com.samuel.productapi.dtos.category.CategoryRequest;
 import br.com.samuel.productapi.dtos.category.CategoryResponse;
 import br.com.samuel.productapi.services.category.CategoryInterfaces;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/category")
 public class CategoryController {
@@ -21,7 +23,18 @@ public class CategoryController {
 	}
 
 	@GetMapping("{id}")
-	public Category findById(@PathVariable Integer id){
-		return category.findById(id);
+	public CategoryResponse findById(@PathVariable Integer id){
+		return category.findByIdResponse(id);
 	}
+
+	@GetMapping("description/{description}")
+	public List<CategoryResponse> findByDescription(@PathVariable String description){
+		return category.findByDescriptionIgnoreCaseContaining(description);
+	}
+
+	@GetMapping()
+	public List<CategoryResponse> findAll(){
+		return category.findAll();
+	}
+
 }

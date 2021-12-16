@@ -4,10 +4,13 @@ import br.com.samuel.productapi.dtos.category.CategoryRequest;
 import br.com.samuel.productapi.dtos.category.CategoryResponse;
 import br.com.samuel.productapi.models.Category;
 
+import java.util.List;
+
 public interface CategoryInterfaces {
 
-	Category findById(Integer id);
-	
 	CategoryResponse save(CategoryRequest request);
-
+	Category findById(Integer id);
+	CategoryResponse findByIdResponse(Integer id);
+	List<CategoryResponse> findAll();
+	List<CategoryResponse> findByDescriptionIgnoreCaseContaining(String description);
 }
