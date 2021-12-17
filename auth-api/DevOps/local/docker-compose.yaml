@@ -1,7 +1,7 @@
 version: '3'
 services:
   auth-db:
-    image: postgres:alpine
+    image: registry.gitlab.com/dalibo/postgresql_anonymizer
     container_name: auth-db
     volumes:
       - ./db:/docker-entrypoint-initdb.d
@@ -9,6 +9,7 @@ services:
       POSTGRES_PASSWORD: '${POSTGRES_PASSWORD}'
       POSTGRES_USER: '${POSTGRES_USER}'
       POSTGRES_DB: '${POSTGRES_DB}'
+    command: postgres -c shared_preload_libraries='anon'
     env_file:
       - ./.env
     ports:

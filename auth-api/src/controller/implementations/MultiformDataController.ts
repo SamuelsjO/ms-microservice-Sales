@@ -1,19 +1,16 @@
 import { Request, Response } from 'express';
 import AppValidationError from '../../errors/AppValidationError';
 import BaseController from '../BaseController';
-import base64topdf from 'pdf-to-base64';
 
 export default class MultiformDataController extends BaseController {
   protected async executeImpl(req: Request, res: Response<any, Record<string, any>>): Promise<Response<any, Record<string, any>>> {
     try {
       if (req.file) {
-        const arq = req.file.buffer;
+        const buffer = Buffer.from(req.file.buffer).toString('base64');
 
-        const hash = base64topdf(arq);
-
-        console.log('hash :>> ', await hash);
-        return this.respondCreated(res, hash);
+        return this.respondCreated(res, { buffer });
       }
+      return this.respondCreated(res, { message: 'not have archive' });
     } catch (error: any) {
       if (error instanceof AppValidationError) {
         return this.respondValidationError(res, error);
