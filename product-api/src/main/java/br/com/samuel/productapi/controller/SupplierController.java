@@ -8,6 +8,8 @@ import br.com.samuel.productapi.dtos.supplier.SupplierRequest;
 import br.com.samuel.productapi.dtos.supplier.SupplierResponse;
 import br.com.samuel.productapi.services.Supplier.SupplierInterfaces;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/supplier")
@@ -21,8 +23,19 @@ public class SupplierController {
 		return supplier.save(request);
 	}
 
+
 	@GetMapping("{id}")
-	public Supplier findById(@PathVariable Integer id){
-		return supplier.findById(id);
+	public SupplierResponse findById(@PathVariable Integer id) {
+		return supplier.findByIdResponse(id);
+	}
+
+	@GetMapping()
+	public List<SupplierResponse> findAll(){
+		return supplier.findAll();
+	}
+
+	@GetMapping("name/{name}")
+	public List<SupplierResponse> findByNameIgnoreCaseContaining(@PathVariable String name){
+		return supplier.findByNameIgnoreCaseContaining(name);
 	}
 }

@@ -5,7 +5,13 @@ import org.springframework.stereotype.Repository;
 
 import br.com.samuel.productapi.models.Product;
 
+import java.util.List;
+
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
+
+    List<Product> findByNameIgnoreCaseContaining(String name);
+    List<Product> findByCategoryId(Integer id);
+    List<Product> findBySupplierId(Integer id);
 
 }

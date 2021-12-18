@@ -1,6 +1,9 @@
 package br.com.samuel.productapi.services.impl.Product;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 import br.com.samuel.productapi.dtos.product.ProductRequest;
 import br.com.samuel.productapi.dtos.product.ProductResponse;
 import br.com.samuel.productapi.exception.ValidationException;
@@ -29,6 +32,9 @@ public class ProductServicesImpl implements ProductInterfaces {
 
 	@Override
 	public Product findById(Integer id) {
+		if(isEmpty(id)){
+			throw new ValidationException("The product ID must be informed");
+		}
 		return repository.findById(id).orElseThrow(() -> new ValidationException("There's no product for the given ID"));
 	}
 
@@ -42,6 +48,57 @@ public class ProductServicesImpl implements ProductInterfaces {
 
 		var product = repository.save(Product.of(request, supplier, category));
 		return ProductResponse.of(product);
+	}
+
+	@Override
+	public List<ProductResponse> findByNameIgnoreCaseContaining(String name) {
+		if(isEmpty(name)){
+			throw new ValidationException("The supplier name must be informed");
+		}
+		return repository.findByNameIgnoreCaseContaining(name)
+				.stream()
+				.map(ProductResponse::of)
+				.collect(Collectors.toList());
+	}
+
+	@Override
+	public List<ProductResponse> findByCategoryId(Integer categoryId) {
+		if(isEmpty(categoryId)){
+			throw new ValidationException("The product category ID must be informed");
+		}
+		return repository
+				.findByCategoryId(categoryId)
+				.stream()
+				.map(ProductResponse::of)
+				.collect(Collectors.toList());
+	}
+
+	@Override
+	public List<ProductResponse> findBySupplierId(Integer supplierId) {
+		if(isEmpty(supplierId)){
+			throw new ValidationException("The product supplier ID must be informed");
+		}
+		return repository
+				.findBySupplierId(supplierId)
+				.stream()
+				.map(ProductResponse::of)
+				.collect(Collectors.toList());
+	}
+
+	@Override
+	public ProductResponse findByIdResponse(Integer id) {
+		if(isEmpty(id)){
+			throw new ValidationException("The product ID must be informed");
+		}
+		return ProductResponse.of(findById(id));
+	}
+
+	@Override
+	public List<ProductResponse> findAll() {
+		return repository.findAll()
+				.stream()
+				.map(ProductResponse::of)
+				.collect(Collectors.toList());
 	}
 
 	private void validateProductDataInformed(ProductRequest request) {
