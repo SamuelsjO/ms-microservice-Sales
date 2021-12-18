@@ -1,6 +1,6 @@
 package br.com.samuel.productapi.controller;
 
-import br.com.samuel.productapi.models.Supplier;
+import br.com.samuel.productapi.config.SuccessResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,5 +37,15 @@ public class SupplierController {
 	@GetMapping("name/{name}")
 	public List<SupplierResponse> findByNameIgnoreCaseContaining(@PathVariable String name){
 		return supplier.findByNameIgnoreCaseContaining(name);
+	}
+
+	@PutMapping("{id}")
+	public SupplierResponse update(@RequestBody SupplierRequest request, @PathVariable Integer id){
+		return supplier.update(request,id);
+	}
+
+	@DeleteMapping("{id}")
+	public SuccessResponse delete(@PathVariable Integer id){
+		return supplier.delete(id);
 	}
 }

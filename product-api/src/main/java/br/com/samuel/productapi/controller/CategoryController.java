@@ -1,6 +1,6 @@
 package br.com.samuel.productapi.controller;
 
-import br.com.samuel.productapi.models.Category;
+import br.com.samuel.productapi.config.SuccessResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,4 +37,14 @@ public class CategoryController {
 		return category.findAll();
 	}
 
+
+	@PutMapping("{id}")
+	public CategoryResponse update(@RequestBody CategoryRequest request, @PathVariable Integer id){
+		return category.update(request,id);
+	}
+
+	@DeleteMapping("{id}")
+	public SuccessResponse delete(@PathVariable Integer id){
+		return category.delete(id);
+	}
 }

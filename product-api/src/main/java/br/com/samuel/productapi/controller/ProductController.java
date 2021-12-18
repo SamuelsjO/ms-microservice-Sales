@@ -1,9 +1,8 @@
 package br.com.samuel.productapi.controller;
 
-import br.com.samuel.productapi.dtos.category.CategoryResponse;
+import br.com.samuel.productapi.config.SuccessResponse;
 import br.com.samuel.productapi.dtos.product.ProductRequest;
 import br.com.samuel.productapi.dtos.product.ProductResponse;
-import br.com.samuel.productapi.models.Product;
 import br.com.samuel.productapi.services.Product.ProductInterfaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -45,5 +44,14 @@ public class ProductController {
     @GetMapping("supplier/{supplierId}")
     public List<ProductResponse> findBySupplierId(@PathVariable Integer supplierId){
         return product.findBySupplierId(supplierId);
+    }
+
+    @PutMapping("{id}")
+    public ProductResponse update(@RequestBody ProductRequest request, @PathVariable Integer id){
+        return product.update(request,id);
+    }
+    @DeleteMapping("{id}")
+    public SuccessResponse delete(@PathVariable Integer id){
+        return product.delete(id);
     }
 }

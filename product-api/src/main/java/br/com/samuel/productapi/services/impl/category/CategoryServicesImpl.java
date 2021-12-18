@@ -1,5 +1,9 @@
 package br.com.samuel.productapi.services.impl.category;
 
+import br.com.samuel.productapi.config.SuccessResponse;
+import br.com.samuel.productapi.dtos.supplier.SupplierRequest;
+import br.com.samuel.productapi.dtos.supplier.SupplierResponse;
+import br.com.samuel.productapi.services.Product.ProductInterfaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,12 +25,16 @@ public class CategoryServicesImpl implements CategoryInterfaces {
 	@Autowired
 	private CategoryRepository repository;
 
+	@Autowired
+	private ProductInterfaces product;
+
 	@Override
 	public Category findById(Integer id) {
-		if(isEmpty(id)){
-			throw new ValidationException("There's no category ID was not informed");
-		}
-       return repository.findById(id).orElseThrow(() -> new ValidationException("There's no category for the given ID"));
+	validateInformedId(id);
+       return repository
+			   .findById(id).
+			   orElseThrow(() ->
+					   new ValidationException("There's no category for the given ID"));
 
 	}
 
@@ -48,6 +56,17 @@ public class CategoryServicesImpl implements CategoryInterfaces {
 		return repository.findByDescriptionIgnoreCaseContaining(description).stream().map(category -> CategoryResponse.of(category)).collect(Collectors.toList());
 	}
 
+	@Override
+	public SuccessResponse delete(Integer id) {
+		validateInformedId(id);
+		if(product.existCategoryId(id)){
+			throw new ValidationException("You cannot delete this category because it's already defined by a product");
+
+		}
+		repository.deleteById(id);
+		return SuccessResponse.create("The category was delete");
+	}
+
 
 	@Override
 	public CategoryResponse save(CategoryRequest request) {
@@ -56,9 +75,26 @@ public class CategoryServicesImpl implements CategoryInterfaces {
 		return CategoryResponse.of(category);
 	}
 
+	@Override
+	public CategoryResponse update(CategoryRequest request, Integer id) {
+		validateCategoryNameInformed(request);
+		validateInformedId(id);
+		var category = Category.of(request);
+		category.setId(id);
+		repository.save(category);
+		return CategoryResponse.of(category);
+	}
+
+
 	private void validateCategoryNameInformed(CategoryRequest request) {
 		if(isEmpty(request.getDescription())){
 			throw new ValidationException("The category description was not informed. ");
+		}
+	}
+
+	private void validateInformedId(Integer id) {
+		if (isEmpty(id)) {
+			throw new ValidationException("The category ID must be informed.");
 		}
 	}
 }

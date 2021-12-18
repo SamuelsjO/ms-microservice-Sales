@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import br.com.samuel.productapi.config.SuccessResponse;
 import br.com.samuel.productapi.dtos.product.ProductRequest;
 import br.com.samuel.productapi.dtos.product.ProductResponse;
 import br.com.samuel.productapi.exception.ValidationException;
@@ -32,9 +33,7 @@ public class ProductServicesImpl implements ProductInterfaces {
 
 	@Override
 	public Product findById(Integer id) {
-		if(isEmpty(id)){
-			throw new ValidationException("The product ID must be informed");
-		}
+		validateInformedId(id);
 		return repository.findById(id).orElseThrow(() -> new ValidationException("There's no product for the given ID"));
 	}
 
@@ -47,6 +46,22 @@ public class ProductServicesImpl implements ProductInterfaces {
 		var supplier = supplierInterfaces.findById(request.getSupplierId());
 
 		var product = repository.save(Product.of(request, supplier, category));
+		return ProductResponse.of(product);
+	}
+
+	@Override
+	public ProductResponse update(ProductRequest request, Integer id) {
+		validateProductDataInformed(request);
+		validateCategoryAndSupplierInformed(request);
+		validateInformedId(id);
+
+		var category = categoryInterfaces.findById(request.getCategoryId());
+		var supplier = supplierInterfaces.findById(request.getSupplierId());
+
+		var product = Product.of(request, supplier, category);
+		product.setId(id);
+		repository.save(product);
+
 		return ProductResponse.of(product);
 	}
 
@@ -87,9 +102,7 @@ public class ProductServicesImpl implements ProductInterfaces {
 
 	@Override
 	public ProductResponse findByIdResponse(Integer id) {
-		if(isEmpty(id)){
-			throw new ValidationException("The product ID must be informed");
-		}
+		validateInformedId(id);
 		return ProductResponse.of(findById(id));
 	}
 
@@ -99,6 +112,23 @@ public class ProductServicesImpl implements ProductInterfaces {
 				.stream()
 				.map(ProductResponse::of)
 				.collect(Collectors.toList());
+	}
+
+	@Override
+	public Boolean existCategoryId(Integer id) {
+		return repository.existsByCategoryId(id);
+	}
+
+	@Override
+	public Boolean existSupplierId(Integer id) {
+		return repository.existsBySupplierId(id);
+	}
+
+	@Override
+	public SuccessResponse delete(Integer id) {
+		validateInformedId(id);
+		repository.deleteById(id);
+		return SuccessResponse.create("The product wa delete");
 	}
 
 	private void validateProductDataInformed(ProductRequest request) {
@@ -122,6 +152,12 @@ public class ProductServicesImpl implements ProductInterfaces {
 
 		if(isEmpty(request.getCategoryId())){
 			throw new ValidationException("The product category ID was not informed. ");
+		}
+	}
+
+	private void validateInformedId(Integer id) {
+		if (isEmpty(id)) {
+			throw new ValidationException("The product ID must be informed.");
 		}
 	}
 

@@ -1,5 +1,7 @@
 package br.com.samuel.productapi.services.impl.Supplier;
 
+import br.com.samuel.productapi.config.SuccessResponse;
+import br.com.samuel.productapi.services.Product.ProductInterfaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,9 @@ public class SupplierServicesImpl implements SupplierInterfaces {
 	@Autowired
 	private SupplierRepository repository;
 
+	@Autowired
+	private ProductInterfaces product;
+
 	@Override
 	public Supplier findById(Integer id) {
 		validateInformedId(id);
@@ -31,6 +36,16 @@ public class SupplierServicesImpl implements SupplierInterfaces {
 	public SupplierResponse save(SupplierRequest request) {
 		validateSupplierNameInformed(request);
 		var supplier = repository.save(Supplier.of(request));
+		return SupplierResponse.of(supplier);
+	}
+
+	@Override
+	public SupplierResponse update(SupplierRequest request, Integer id) {
+		validateSupplierNameInformed(request);
+		validateInformedId(id);
+		var supplier = Supplier.of(request);
+		supplier.setId(id);
+		repository.save(supplier);
 		return SupplierResponse.of(supplier);
 	}
 
@@ -47,9 +62,7 @@ public class SupplierServicesImpl implements SupplierInterfaces {
 
 	@Override
 	public SupplierResponse findByIdResponse(Integer id) {
-		if(isEmpty(id)){
-			throw new ValidationException("The supplier ID must be informed");
-		}
+		validateInformedId(id);
 		return SupplierResponse.of(findById(id));
 	}
 
@@ -60,6 +73,16 @@ public class SupplierServicesImpl implements SupplierInterfaces {
 				.stream()
 				.map(SupplierResponse::of)
 				.collect(Collectors.toList());
+	}
+
+	@Override
+	public SuccessResponse delete(Integer id) {
+		validateInformedId(id);
+		if(product.existSupplierId(id)){
+			throw new ValidationException("You cannot delete this supplier because it's already defined by a product");
+		}
+		repository.deleteById(id);
+		return SuccessResponse.create("The supplier was delete");
 	}
 
 	private void validateSupplierNameInformed(SupplierRequest request) {
