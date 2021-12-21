@@ -1,10 +1,12 @@
 import { NextFunction, Request, Response } from 'express';
 import mime from 'mime';
 import multer, { Options } from 'multer';
-import base64topdf from 'pdf-to-base64';
+import BaseResponse from '../BaseResponse/BaseResponse';
+import AppValidationError from '../errors/AppValidationError';
+import { multerFields } from '../helper/multerFields';
 
-export class MulterMiddleware {
-  async handle(req: Request, res: Response, next: NextFunction): Promise<void | Response> {
+export class MulterMiddleware extends BaseResponse {
+  async execute(req: Request, res: Response, next: NextFunction): Promise<void | Response> {
     try {
       const multerConfig: Options = {
         limits: {
@@ -22,10 +24,38 @@ export class MulterMiddleware {
         },
       };
 
-      const upload = multer(multerConfig).single('img');
-      upload(req, res, async err => {
-        if (err) {
-          return res.status(500).send({ code: 500, message: err });
+      const multerArch = multer(multerConfig).fields([
+        {
+          name: multerFields.clinicalEvolution,
+          maxCount: 1,
+        },
+        {
+          name: multerFields.labReportResult,
+          maxCount: 1,
+        },
+        {
+          name: multerFields.imageResult,
+          maxCount: 1,
+        },
+      ]);
+      multerArch(req, res, err => {
+        console.log('files :>> ', req.files);
+
+        console.log('Parse: ', JSON.parse(JSON.stringify(req.files)));
+
+        if (req.files) {
+          const fileKeys: string[] = Object.keys(req.files);
+
+          const filesreq: any = req.files;
+
+          fileKeys.forEach((key: string) => {
+            const file = filesreq[key][0];
+            const buffer = Buffer.from(file.buffer).toString('base64');
+            console.log('buffer :>> ', buffer);
+            req.body.imageResult = buffer;
+            req.body.labReportResult = buffer;
+            req.body.clinicalEvolution = buffer;
+          });
         }
 
         if (err) {
@@ -47,7 +77,7 @@ export class MulterMiddleware {
         return next();
       });
     } catch (error: any) {
-      return res.status(500).send({ code: 500, message: 'Erro valid directory' });
+      throw new AppValidationError(error.errors);
     }
   }
 }
