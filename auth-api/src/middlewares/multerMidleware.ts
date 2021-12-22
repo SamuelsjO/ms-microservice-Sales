@@ -34,27 +34,22 @@ export class MulterMiddleware extends BaseResponse {
           maxCount: 1,
         },
         {
-          name: multerFields.imageResult,
+          name: multerFields.reportImageResult,
           maxCount: 1,
         },
       ]);
       multerArch(req, res, err => {
-        console.log('files :>> ', req.files);
-
-        console.log('Parse: ', JSON.parse(JSON.stringify(req.files)));
-
         if (req.files) {
           const fileKeys: string[] = Object.keys(req.files);
-
-          const filesreq: any = req.files;
+          const filesReq: any = req.files;
 
           fileKeys.forEach((key: string) => {
-            const file = filesreq[key][0];
+            const file = filesReq[key][0];
             const buffer = Buffer.from(file.buffer).toString('base64');
-            console.log('buffer :>> ', buffer);
-            req.body.imageResult = buffer;
-            req.body.labReportResult = buffer;
-            req.body.clinicalEvolution = buffer;
+
+            if (file.fieldname === multerFields.clinicalEvolution) req.body.clinicalEvolution = buffer;
+            if (file.fieldname === multerFields.labReportResult) req.body.labReportResult = buffer;
+            if (file.fieldname === multerFields.reportImageResult) req.body.reportImageResult = buffer;
           });
         }
 
@@ -62,17 +57,19 @@ export class MulterMiddleware extends BaseResponse {
           let errCode = err.code;
           let errMessage = err.message || err;
 
+          console.log('err :>> ', err);
+
           if (err.message?.includes('messages.file.multerInvalidDirectory')) {
             errCode = 400;
             errMessage = 'messages.file.invalidDirectory';
           }
 
-          if (err.message == 'messages.file.multerMaxLength') {
+          if (err.Error == 'error de type') {
             errCode = 400;
             errMessage = 'messages.file.maxLength';
           }
 
-          return res.status(400).send({ code: 400, message: 'Erro valid directory' });
+          return res.status(400).send({ code: 400, message: 'Erro valid type' });
         }
         return next();
       });

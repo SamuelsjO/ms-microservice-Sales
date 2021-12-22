@@ -5,10 +5,14 @@ import BaseController from '../BaseController';
 export default class MultiformDataController extends BaseController {
   protected async executeImpl(req: Request, res: Response<any, Record<string, any>>): Promise<Response<any, Record<string, any>>> {
     try {
-      return this.respondCreated(res, { message: [
-        req.body.clinicalEvolution, 
-        req.body.clinicalEvolution, 
-        req.body.imageResult] });
+      if (req.files) {
+        const clinicalEvolution = 'ClinicalEvolution: ' + req.body.clinicalEvolution;
+        const labReportResult = 'LabResportResult: ' + req.body.labReportResult;
+        const imageResult = 'ImageResult: ' + req.body.imageResult;
+
+        return this.respondCreated(res, { message: [clinicalEvolution, labReportResult, imageResult] });
+      }
+      return this.respondCreated(res, { message: 'Not exist files' });
     } catch (error: any) {
       if (error instanceof AppValidationError) {
         return this.respondValidationError(res, error);
