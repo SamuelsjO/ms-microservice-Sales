@@ -28,7 +28,8 @@ export default class GetAcessTokenController extends BaseController {
         return res.sendStatus(401);
       }
 
-      const token = jwt.sign({ id: users.id }, process.env.API_SECRET, { expiresIn: '1d' });
+      const authUser = { id: users.id, name: users.name, email: users.email };
+      const token = jwt.sign({ authUser }, process.env.API_SECRET, { expiresIn: '1d' });
 
       delete users.password;
 
