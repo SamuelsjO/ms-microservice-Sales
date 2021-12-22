@@ -1,7 +1,10 @@
 server:
   port: 8081
 
-spring: 
+spring:
+
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: product-api 
 
@@ -27,6 +30,24 @@ spring:
       platform: postgresql
       continue-on-error: true
 
+  rabbitmq:
+    host: ${RABBIT_MQ_HOST:localhost}
+    port: ${RABBIT_MQ_PORT:5672}
+    username: ${RABBIT_MQ_USER:guest}
+    password: ${RABBIT_MQ_PASSWORD:guest}
+
 app-config:
   secrets:
     api-secret: ${API_SECRET:2bb80d537b1da3e38bd30361aa855686bde0eacd7162fef6a25fe97bf527a25b}
+
+  rabbit:
+    exchange:
+      product: product.topic
+
+    routingKey:
+      product-stock: product-stock-update.routingKey
+      sales-confirmation: sales-confirmation.routingKey
+
+    queue:
+      product-stock: product-stock-update.queue
+      sales-confirmation: sales-confirmation.queue

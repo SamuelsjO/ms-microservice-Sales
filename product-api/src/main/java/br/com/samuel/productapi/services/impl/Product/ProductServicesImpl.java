@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import br.com.samuel.productapi.config.SuccessResponse;
 import br.com.samuel.productapi.dtos.product.ProductRequest;
 import br.com.samuel.productapi.dtos.product.ProductResponse;
+import br.com.samuel.productapi.dtos.product.ProductStockDTO;
 import br.com.samuel.productapi.exception.ValidationException;
 import br.com.samuel.productapi.repository.ProductRepository;
 import br.com.samuel.productapi.services.Supplier.SupplierInterfaces;
@@ -159,6 +160,11 @@ public class ProductServicesImpl implements ProductInterfaces {
 		if (isEmpty(id)) {
 			throw new ValidationException("The product ID must be informed.");
 		}
+	}
+
+	@Override
+	public void updateProductStock(ProductStockDTO productStockDTO) {
+
 	}
 
 }
