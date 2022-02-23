@@ -39,6 +39,12 @@ public class ProductServicesImpl implements ProductInterfaces {
 	}
 
 	@Override
+	public ProductResponse findByIdResponse(Integer id) {
+		validateInformedId(id);
+		return ProductResponse.of(findById(id));
+	}
+
+	@Override
 	public ProductResponse save(ProductRequest request) {
 		validateProductDataInformed(request);
 		validateCategoryAndSupplierInformed(request);
@@ -101,11 +107,7 @@ public class ProductServicesImpl implements ProductInterfaces {
 				.collect(Collectors.toList());
 	}
 
-	@Override
-	public ProductResponse findByIdResponse(Integer id) {
-		validateInformedId(id);
-		return ProductResponse.of(findById(id));
-	}
+
 
 	@Override
 	public List<ProductResponse> findAll() {
