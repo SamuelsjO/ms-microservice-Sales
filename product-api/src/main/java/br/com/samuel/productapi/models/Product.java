@@ -52,4 +52,8 @@ public class Product {
 				.category(category)
 				.build();
 	}
+
+	public void updateStock(Integer quantity){
+		quantityAvailable = quantityAvailable - quantity;
+	}
 }
