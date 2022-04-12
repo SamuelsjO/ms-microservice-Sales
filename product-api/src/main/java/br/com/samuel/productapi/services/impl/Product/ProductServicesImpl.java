@@ -1,13 +1,11 @@
 package br.com.samuel.productapi.services.impl.Product;
 
 import br.com.samuel.productapi.config.SuccessResponse;
-import br.com.samuel.productapi.dtos.product.ProductQuantityDTO;
-import br.com.samuel.productapi.dtos.product.ProductRequest;
-import br.com.samuel.productapi.dtos.product.ProductResponse;
-import br.com.samuel.productapi.dtos.product.ProductStockDTO;
+import br.com.samuel.productapi.dtos.product.*;
 import br.com.samuel.productapi.exception.ValidationException;
 import br.com.samuel.productapi.models.Product;
 import br.com.samuel.productapi.repository.ProductRepository;
+import br.com.samuel.productapi.sales.client.SalesClient;
 import br.com.samuel.productapi.sales.dto.SalesConfirmationDTO;
 import br.com.samuel.productapi.sales.enums.SalesStatus;
 import br.com.samuel.productapi.sales.rabbitmq.SalesConfirmationSender;
@@ -39,6 +37,8 @@ public class ProductServicesImpl implements ProductInterfaces {
     private CategoryInterfaces categoryInterfaces;
     @Autowired
     private SalesConfirmationSender salesConfirmationSender;
+    @Autowired
+    private SalesClient salesClient;
 
     @Override
     public Product findById(Integer id) {
@@ -183,6 +183,18 @@ public class ProductServicesImpl implements ProductInterfaces {
 
     }
 
+    @Override
+    public ProductSalesResponse findProductSales(Integer id) {
+        var product = findById(id);
+        try {
+            var sales = salesClient.findSalesProductId(product.getId())
+                    .orElseThrow(() -> new ValidationException("The sales was not found by this product."));
+            return ProductSalesResponse.of(product, sales.getSalesIds());
+        } catch (Exception ex) {
+            throw new ValidationException("There was an error trying  to get the product's sales");
+        }
+    }
+
     @Transactional
     private void updateStock(ProductStockDTO productDto) {
         var productForUpdate = new ArrayList<Product>();
@@ -204,6 +216,7 @@ public class ProductServicesImpl implements ProductInterfaces {
             throw new ValidationException(String.format("The product %s out of stock", existingProduct.getId()));
         }
     }
+
 
 
 }
