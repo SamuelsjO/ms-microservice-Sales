@@ -3,10 +3,7 @@ package br.com.samuel.productapi.services.Product;
 import java.util.List;
 
 import br.com.samuel.productapi.config.SuccessResponse;
-import br.com.samuel.productapi.dtos.product.ProductRequest;
-import br.com.samuel.productapi.dtos.product.ProductResponse;
-import br.com.samuel.productapi.dtos.product.ProductSalesResponse;
-import br.com.samuel.productapi.dtos.product.ProductStockDTO;
+import br.com.samuel.productapi.dtos.product.*;
 import br.com.samuel.productapi.models.Product;
 
 public interface ProductInterfaces {
@@ -25,4 +22,5 @@ public interface ProductInterfaces {
 	SuccessResponse delete(Integer id);
 	void updateProductStock(ProductStockDTO productStockDTO);
 	ProductSalesResponse findProductSales(Integer id);
+	SuccessResponse checkProductsStock(ProductCheckStockRequest request);
 }

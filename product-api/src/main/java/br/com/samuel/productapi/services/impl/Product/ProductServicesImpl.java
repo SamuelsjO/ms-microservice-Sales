@@ -195,6 +195,28 @@ public class ProductServicesImpl implements ProductInterfaces {
         }
     }
 
+    @Override
+    public SuccessResponse checkProductsStock(ProductCheckStockRequest request) {
+        if (isEmpty(request) || isEmpty(request.getProducts())) {
+            throw new ValidationException("The request data and products must be informed.");
+        }
+        request
+                .getProducts()
+                .forEach(this::validateStock);
+        return SuccessResponse.create("The stock is ok!.");
+    }
+
+    private void validateStock(ProductQuantityDTO productQuantity) {
+        if (isEmpty(productQuantity.getProductId()) || isEmpty(productQuantity.getQuantity())) {
+            throw new ValidationException("Product ID and quantity must be informed.");
+        }
+        var product = findById(productQuantity.getProductId());
+        if (productQuantity.getQuantity() > product.getQuantityAvailable()) {
+            throw new ValidationException(String.format("The product %s is out of start.", product.getId()));
+
+        }
+    }
+
     @Transactional
     private void updateStock(ProductStockDTO productDto) {
         var productForUpdate = new ArrayList<Product>();
@@ -216,7 +238,6 @@ public class ProductServicesImpl implements ProductInterfaces {
             throw new ValidationException(String.format("The product %s out of stock", existingProduct.getId()));
         }
     }
-
 
 
 }
