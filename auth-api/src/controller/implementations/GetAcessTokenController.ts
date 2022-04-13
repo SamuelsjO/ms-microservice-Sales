@@ -16,6 +16,7 @@ export default class GetAcessTokenController extends BaseController {
     try {
       const { email, password } = req.body;
 
+      console.log('req.body :>> ', req.body);
       const users = await this.findUsersService.execute({ email });
 
       if (!users) {
@@ -23,6 +24,8 @@ export default class GetAcessTokenController extends BaseController {
       }
 
       const isValidPassword = await bcrypt.compare(password, users.password);
+
+      console.log('enterou aqui :>> ', users.password, password);
 
       if (!isValidPassword) {
         return res.sendStatus(401);
