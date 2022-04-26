@@ -2,7 +2,6 @@ import { MONGO_DB_URL } from './secret/secrets';
 import express from "express";
 import mongoose from "mongoose";
 import cors from 'cors';
-import Order from './schemas/Order'
 import routes from './routes'
 
 class App {
@@ -20,12 +19,15 @@ class App {
         this.express.use(cors())
     }
     private database(): void {
-        try {
-            mongoose.connect(MONGO_DB_URL);
-            console.info("Connected dataBase mongo!")
-        } catch (error) {
-            console.error("Not Connected dataBase!!!, ", error)
-        }
+           try {
+            mongoose.connect(MONGO_DB_URL, {
+                useNewUrlParser: true,
+                useUnifiedTopology: true
+            });
+           } catch (error) {
+               mongoose.Error
+           }
+        
     }
 
     private routes(): void {
