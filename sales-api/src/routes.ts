@@ -1,10 +1,12 @@
 import { Router } from 'express';
 
-import OrderController from './controllers/order/OrderController';
+import OrderController from './controllers/impl/OrderController';
 
 const routes = Router();
 
 routes.get('/api/orders', OrderController.index);
+
+routes.post('api/order');
 
 
 routes.get('/api/status', async (req, res) => {

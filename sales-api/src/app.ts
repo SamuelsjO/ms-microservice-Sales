@@ -1,4 +1,5 @@
 import { MONGO_DB_URL } from './secret/secrets';
+import { createInitialData } from './dbInit/initialData';
 import express from "express";
 import mongoose from "mongoose";
 import cors from 'cors';
@@ -12,6 +13,7 @@ class App {
         this.middleware();
         this.database();
         this.routes();
+        this.createData();
     }
 
     private middleware(): void {
@@ -33,6 +35,9 @@ class App {
     private routes(): void {
 
         this.express.use(routes); 
+    }
+    private createData(): void {
+        createInitialData();
     }
 
 }
