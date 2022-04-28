@@ -3,7 +3,7 @@ import { createInitialData } from './dbInit/initialData';
 import express from "express";
 import mongoose from "mongoose";
 import cors from 'cors';
-import routes from './routes'
+import routes from './routes/routes'
 
 class App {
     public express: express.Application

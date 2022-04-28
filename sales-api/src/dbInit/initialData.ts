@@ -1,4 +1,4 @@
-import Order from "../schemas/Order";
+import Order from "../Models/Order";
 
 export async function createInitialData() {
     await Order.collection.drop();
