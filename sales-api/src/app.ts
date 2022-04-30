@@ -3,10 +3,8 @@ import { createInitialData } from './dbInit/initialData';
 import express from "express";
 import mongoose from "mongoose";
 import cors from 'cors';
-import routes from './routes/routes'
-
-import swaggerUi from "swagger-ui-express";
-import { swaggerDocs } from './swaggerOptions';
+import routes from './routes/routes';
+import { connectionRabbitMq } from "./rabbitmq/rabbitConfig";
 
 class App {
     public express: express.Application
@@ -17,7 +15,7 @@ class App {
         this.database();
         this.routes();
         this.createData();
-        this.swaggerGenerate();
+        this.rabbitMq();
     }
 
     private middleware(): void {
@@ -36,16 +34,17 @@ class App {
         
     }
 
+    private rabbitMq(): void {
+        connectionRabbitMq();
+    }
+
     private routes(): void {
 
         this.express.use(routes); 
+
     }
     private createData(): void {
         createInitialData();
-    }
-
-    private swaggerGenerate(): void {
-        this.express.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
     }
 
 }

@@ -14,12 +14,11 @@
     "target": "ES6",
     "typeRoots": [
       "./src/@types",
-      "./custom_typings",
       "./@types",
       "./node_modules/@types"
     ]
     
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "src/@types/swagger-autogen.d.ts"],
   "exclude": ["node_modules"]
 }

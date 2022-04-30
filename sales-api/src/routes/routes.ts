@@ -5,15 +5,7 @@ import authMiddeware from '../midleware/authMidleware';
 
 const routes = Router();
 
-/**
- * @swagger
- * /sales:
- *  get:
- *    description: User to request all Orders
- *    responses:
- *      '200':
- *        description: A sucessful response 
-*/
+
 routes.get('/api/orders', OrderController.index);
 
 routes.post('api/order');
