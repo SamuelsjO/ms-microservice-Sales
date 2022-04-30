@@ -1,7 +1,7 @@
 import Order from "../Models/Order";
 
 export async function createInitialData() {
-    await Order.collection.drop();
+    // await Order.collection.drop();
     let fisrtOrder = Order.create({
         products: [
             {

@@ -8,7 +8,8 @@ const routes = Router();
 
 routes.use('/', usersRouter);
 routes.use('/user', findRoute);
-routes.use('/auth', authRoute);
+routes.use('/authToken', authRoute);
+routes.use('/auth', usersRouter);
 routes.use('/multi', multiFormRouter);
 
 export default routes;

@@ -14,6 +14,7 @@ export default class UsersController extends BaseController {
   protected async executeImpl(req: Request, res: Response<any, Record<string, any>>): Promise<Response<any, Record<string, any>>> {
     try {
       const users: RequestUsersDTO = req.body;
+      console.log(users)
       const usersCreate = await this.usersService.execute(users);
       return this.respondCreated(res, usersCreate);
     } catch (error: any) {

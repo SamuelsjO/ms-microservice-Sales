@@ -13,8 +13,7 @@
     "skipLibCheck": true /* Skip type checking of declaration files. */,
     "strictNullChecks": false,
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
-    "lib": ["es2015"],
-    "typeRoots": ["./src/@types", "./@types", "./node_modules/@types"]
+    "lib": ["es2015"]
   },
   "include": ["./src/**/*"]
 }

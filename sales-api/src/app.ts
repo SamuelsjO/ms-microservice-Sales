@@ -5,6 +5,9 @@ import mongoose from "mongoose";
 import cors from 'cors';
 import routes from './routes/routes'
 
+import swaggerUi from "swagger-ui-express";
+import { swaggerDocs } from './swaggerOptions';
+
 class App {
     public express: express.Application
 
@@ -14,6 +17,7 @@ class App {
         this.database();
         this.routes();
         this.createData();
+        this.swaggerGenerate();
     }
 
     private middleware(): void {
@@ -40,6 +44,12 @@ class App {
         createInitialData();
     }
 
+    private swaggerGenerate(): void {
+        this.express.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+    }
+
 }
+
+
 
 export default new App().express

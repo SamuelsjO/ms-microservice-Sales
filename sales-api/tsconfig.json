@@ -11,7 +11,13 @@
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
     "lib": ["es2015"],
     "sourceMap": true,
-    "target": "ES6"
+    "target": "ES6",
+    "typeRoots": [
+      "./src/@types",
+      "./custom_typings",
+      "./@types",
+      "./node_modules/@types"
+    ]
     
   },
   "include": ["./src/**/*"],
