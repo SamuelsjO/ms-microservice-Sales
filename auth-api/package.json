@@ -10,7 +10,6 @@
     "lint": "eslint './src/**/*.ts'",
     "start": "node dist/server.js",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
-    
   },
   "Author": "samucagm@rocketmail.com",
   "license": "ISC",
