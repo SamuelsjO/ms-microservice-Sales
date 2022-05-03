@@ -39,9 +39,7 @@ class App {
     }
 
     private routes(): void {
-
         this.express.use(routes); 
-
     }
     private createData(): void {
         createInitialData();

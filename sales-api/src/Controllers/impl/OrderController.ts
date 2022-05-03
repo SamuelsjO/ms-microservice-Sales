@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import Order from '../../Models/Order';
+import Order from '../../Models/sales/Order';
 
 class OrderController {
     public async index (req: Request, res: Response): Promise<Response> {
