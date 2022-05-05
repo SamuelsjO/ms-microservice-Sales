@@ -16,6 +16,7 @@ class App {
         this.routes();
         this.createData();
         this.rabbitMq();
+        this.versionApi();
     }
 
     private middleware(): void {
@@ -43,6 +44,10 @@ class App {
     }
     private createData(): void {
         createInitialData();
+    }
+
+    private versionApi(): void {
+        this.express.use('/api/v1', routes);
     }
 
 }

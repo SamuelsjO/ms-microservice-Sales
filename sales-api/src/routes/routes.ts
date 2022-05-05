@@ -1,13 +1,39 @@
-import { Router } from 'express';
+import { Request, Response, Router } from 'express';
+import BaseController from '../Controllers/BaseController';
+import CreateOrdersController from '../Controllers/impl/CreateOrdersController';
+import FindOrderController from '../Controllers/impl/FindOrderController';
 
-import OrderController from '../Controllers/impl/OrderController';
 import authMiddeware from '../midleware/authMidleware';
 import { sendMessageToProductStockUpdateQueue } from '../Models/products/rabbitmq/productStockUpdateSender' 
+import OrderRepository from '../repository/impl/OrderRepository';
+import CreateOrderService from '../Services/Impl/CreateOrderService';
 
 const routes = Router();
 
+const orderRep = new OrderRepository();
+const service = new CreateOrderService(orderRep);
+const createOrdersController: BaseController = new CreateOrdersController(service);
 
-routes.get('/api/orders', authMiddeware, OrderController.index);
+const findOrderController: BaseController = new FindOrderController();
+
+routes.get('/orders', async (req: Request, res: Response) => findOrderController.execute(req, res));
+
+
+routes.post('/order', async (req: Request, res: Response) => createOrdersController.execute(req, res));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /**
