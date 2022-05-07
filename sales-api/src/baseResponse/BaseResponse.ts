@@ -1,6 +1,7 @@
 import { Response } from "express";
-import AppError from "../erros/AppError";
-import AppValidationError from "../erros/AppValidationError";
+import AppError from "../exception/AppError";
+import AppValidationError from "../exception/AppValidationError";
+
 
 
 

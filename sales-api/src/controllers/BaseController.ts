@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import BaseResponse from "../BaseResponse/BaseResponse";
+import BaseResponse from "../baseResponse/BaseResponse";
 
 
   export default abstract class BaseController extends BaseResponse {

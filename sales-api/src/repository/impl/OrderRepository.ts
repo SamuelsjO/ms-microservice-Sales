@@ -1,4 +1,4 @@
-import Order from "../../Models/sales/Order";
+import Order from "../../models/sales/Order";
 import RequestOrderDTO from "../../request/RequestOrderDTO";
 import IOrderRepository from "../IOrderRepository";
 

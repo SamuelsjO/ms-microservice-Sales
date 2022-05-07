@@ -1,39 +1,25 @@
 import { Request, Response, Router } from 'express';
-import BaseController from '../Controllers/BaseController';
-import CreateOrdersController from '../Controllers/impl/CreateOrdersController';
-import FindOrderController from '../Controllers/impl/FindOrderController';
 
 import authMiddeware from '../midleware/authMidleware';
-import { sendMessageToProductStockUpdateQueue } from '../Models/products/rabbitmq/productStockUpdateSender' 
-import OrderRepository from '../repository/impl/OrderRepository';
-import CreateOrderService from '../Services/Impl/CreateOrderService';
+import { sendMessageToProductStockUpdateQueue } from '../models/products/rabbitmq/productStockUpdateSender' 
+import { findOrderController, createOrdersController } from '.';
 
 const routes = Router();
 
-const orderRep = new OrderRepository();
-const service = new CreateOrderService(orderRep);
-const createOrdersController: BaseController = new CreateOrdersController(service);
-
-const findOrderController: BaseController = new FindOrderController();
-
+/**Rotas GET */
 routes.get('/orders', async (req: Request, res: Response) => findOrderController.execute(req, res));
 
+routes.get('/api/status', authMiddeware, async (req, res) => {
+    return res.status(200).json({
+        service:"Sales-API",
+        status: "UP",
+        httpStatus: 200
 
+    })
+})
+
+/**Rotas POST */
 routes.post('/order', async (req: Request, res: Response) => createOrdersController.execute(req, res));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /**
@@ -65,13 +51,6 @@ routes.get('/test', async (req, res) => {
 });
 
 
-routes.get('/api/status', authMiddeware, async (req, res) => {
-                return res.status(200).json({
-                    service:"Sales-API",
-                    status: "UP",
-                    httpStatus: 200
-            
-                })
-           })
+
 
 export default routes;

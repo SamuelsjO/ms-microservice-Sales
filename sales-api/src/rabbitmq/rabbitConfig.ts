@@ -9,7 +9,7 @@ import {
     from "./queue";
 
 import { RABBIT_MQ_URL } from "../secret/secrets";
-import { listenToSalesConfirmationQueue } from "../Models/sales/rabbitmq/salesConfirmationLIstener";
+import { listenToSalesConfirmationQueue } from "../models/sales/rabbitmq/salesConfirmationLIstener";
 
 const TWO_SECOND = 2000;
 const HALF_MINUTES = 30000;
