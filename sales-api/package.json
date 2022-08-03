@@ -1,11 +1,11 @@
 {
   "name": "sales-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.ts",
   "license": "MIT",
   "scripts": {
     "dev:start": "ts-node-dev --inspect --transpileOnly --ignore-watch node_modules --no-notify src/server.ts",
-    "start": "node dist/server.js",
+    "start": "tsc && node dist/server.js",
     "tsc": "tsc -p tsconfig.json",
     "dev": "nodemon src/server.ts"
   },
