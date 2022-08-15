@@ -19,7 +19,7 @@ routes.get('/api/status', authMiddeware, async (req, res) => {
 })
 
 /**Rotas POST */
-routes.post('/order', async (req: Request, res: Response) => createOrdersController.execute(req, res));
+routes.post('/api/order', async (req: Request, res: Response) => createOrdersController.execute(req, res));
 
 
 /**
