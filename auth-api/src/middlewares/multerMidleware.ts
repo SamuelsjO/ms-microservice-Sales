@@ -13,7 +13,7 @@ export class MulterMiddleware extends BaseResponse {
           fileSize: 5 * 1024 * 1024, // 5 MB,
         },
         fileFilter: (req, file, cb) => {
-          const type = mime.extension(file.mimetype);
+          const type = mime.getExtension(file.mimetype);
           const allowFormats = ['pdf', 'PDF'];
 
           if (allowFormats.includes(`${type}`)) {
@@ -78,5 +78,3 @@ export class MulterMiddleware extends BaseResponse {
     }
   }
 }
-
-
