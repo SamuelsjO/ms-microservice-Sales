@@ -54,3 +54,21 @@ app-config:
     queue:
       product-stock: product-stock-update.queue
       sales-confirmation: sales-confirmation.queue
+
+
+
+#swagger:
+#  api:
+#    owner: @swagger.api.owner@
+#    title: @swagger.api.title@
+#    description: @swagger.api.description@
+#    termsOfServiceUrl: @swagger.api.termsOfServiceUrl@
+#    version: @project.version@
+#    controller:
+#      base-package: @swagger.api.controller.base-package@
+#    contact:
+#      email: @swagger.api.contact.email@
+#    license:
+#      name: @swagger.api.license.name@
+#      url: @swagger.api.license.url@
+

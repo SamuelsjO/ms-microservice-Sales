@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.5.6</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>br.com.samuel</groupId>
 	<artifactId>product-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>product-api</name>
 	<description>API de produtos</description>
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>2020.0.4</spring-cloud.version>
+
+		<swagger.api.owner>API Controle de estoque</swagger.api.owner>
+		<swagger.api.title>product-api</swagger.api.title>
+		<swagger.api.description>API Stoke</swagger.api.description>
+		<swagger.api.termsOfServiceUrl>https://github.com/SamuelsjO</swagger.api.termsOfServiceUrl>
+		<swagger.api.controller.base-package>${project.groupId}.controller</swagger.api.controller.base-package>
+		<swagger.api.contact.email>samucagm@rocketmail.com</swagger.api.contact.email>
+		<swagger.api.license.name>Apache 2.0</swagger.api.license.name>
+		<swagger.api.license.url>http://www.apache.org/licenses/LICENSE-2.0.html</swagger.api.license.url>
+
 	</properties>
 	<dependencies>
 		<dependency>
@@ -39,10 +49,10 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.22</version><!--$NO-MVN-MAN-VER$-->
-        </dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.22</version><!--$NO-MVN-MAN-VER$-->
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -82,6 +92,18 @@
 			<version>0.11.2</version>
 		</dependency>
 
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+
 
 	</dependencies>
 	<dependencyManagement>
@@ -110,6 +132,62 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>com.github.kongchen</groupId>
+				<artifactId>swagger-maven-plugin</artifactId>
+				<version>3.1.8</version>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<apiSources>
+						<apiSource>
+							<info>
+								<title>${swagger.api.title}</title>
+								<version>${project.version}</version>
+								<description>${swagger.api.description}</description>
+								<termsOfService>${swagger.api.termsOfServiceUrl}</termsOfService>
+								<license>
+									<name>${swagger.api.license.name}</name>
+									<url>${swagger.api.license.url}</url>
+								</license>
+								<contact>
+									<email>${swagger.api.contact.email}</email>
+								</contact>
+							</info>
+							<schemes>
+								<scheme>https</scheme>
+								<scheme>http</scheme>
+							</schemes>
+							<securityDefinitions>
+								<securityDefinition>
+									<name>Authorization</name>
+									<type>apiKey</type>
+									<in>Header</in>
+								</securityDefinition>
+							</securityDefinitions>
+							<host>localhost:8081</host>
+							<basePath>/</basePath>
+							<locations>
+								<location>br.com.samuel.productapi.*</location>
+							</locations>
+							<springmvc>true</springmvc>
+							<outputFormats>json</outputFormats>
+							<swaggerDirectory>
+								${project.build.directory}/generated/swagger-api-spec
+							</swaggerDirectory>
+						</apiSource>
+					</apiSources>
+				</configuration>
+			</plugin>
+
+
 		</plugins>
 	</build>
 
