@@ -38,7 +38,7 @@ app.get("/api/initial-data", async (req, res) => {
 });
 
 app.use(tracing);
-app.use(checkToken);
+
 app.use(orderRoutes);
 
 app.get("/api/status", async (req, res) => {
