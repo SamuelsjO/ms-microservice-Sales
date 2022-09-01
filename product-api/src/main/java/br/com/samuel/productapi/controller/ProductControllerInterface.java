@@ -5,10 +5,8 @@ import br.com.samuel.productapi.dtos.product.ProductCheckStockRequest;
 import br.com.samuel.productapi.dtos.product.ProductRequest;
 import br.com.samuel.productapi.dtos.product.ProductResponse;
 import br.com.samuel.productapi.dtos.product.ProductSalesResponse;
-import br.com.samuel.productapi.services.Product.ProductInterfaces;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.Authorization;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,83 +14,59 @@ import java.util.List;
 import static org.springframework.http.MediaType.ALL_VALUE;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-@RestController
-@Api(tags = "Endpoint category product", authorizations = @Authorization("Authorization"))
+@Api(tags = "Endpoint product", authorizations = @Authorization("Authorization"))
 @RequestMapping(value = "/v1/api/product",
         consumes = {ALL_VALUE, APPLICATION_JSON_VALUE},
         produces = APPLICATION_JSON_VALUE)
-public class ProductController {
-
-    @Autowired
-    private ProductInterfaces product;
+public interface ProductControllerInterface {
 
     @PostMapping(
             consumes = {ALL_VALUE, APPLICATION_JSON_VALUE},
             produces = APPLICATION_JSON_VALUE)
-    public ProductResponse save(@RequestBody ProductRequest request) {
-        return product.save(request);
-    }
-
-    @GetMapping(value = "{id}",
-            consumes = {ALL_VALUE, APPLICATION_JSON_VALUE},
-            produces = APPLICATION_JSON_VALUE)
-    public ProductResponse findById(@PathVariable Integer id) {
-        return product.findByIdResponse(id);
-    }
+    ProductResponse saveProduct(@RequestBody ProductRequest request);
 
     @GetMapping(
             consumes = {ALL_VALUE, APPLICATION_JSON_VALUE},
             produces = APPLICATION_JSON_VALUE)
-    public List<ProductResponse> findAll() {
-        return product.findAll();
-    }
+    ProductResponse findByIdProducts(@RequestParam Integer id);
 
-    @GetMapping(value = "name/{name}",
+    @GetMapping( value = "allProducts",
             consumes = {ALL_VALUE, APPLICATION_JSON_VALUE},
             produces = APPLICATION_JSON_VALUE)
-    public List<ProductResponse> findByNameIgnoreCaseContaining(@PathVariable String name) {
-        return product.findByNameIgnoreCaseContaining(name);
-    }
+    public List<ProductResponse> findAllProducts();
 
-    @GetMapping(value = "category/{categoryId}",
+    @GetMapping(value = "name",
             consumes = {ALL_VALUE, APPLICATION_JSON_VALUE},
             produces = APPLICATION_JSON_VALUE)
-    public List<ProductResponse> findByCategoryId(@PathVariable Integer categoryId) {
-        return product.findByCategoryId(categoryId);
-    }
+    List<ProductResponse> findByNameProductIgnoreCaseContaining(@RequestParam String name);
 
-    @GetMapping(value = "supplier/{supplierId}",
+    @GetMapping(value = "category",
             consumes = {ALL_VALUE, APPLICATION_JSON_VALUE},
             produces = APPLICATION_JSON_VALUE)
-    public List<ProductResponse> findBySupplierId(@PathVariable Integer supplierId) {
-        return product.findBySupplierId(supplierId);
-    }
+    List<ProductResponse> findByCategoryId(@RequestParam Integer categoryId);
 
-    @PutMapping(value = "{id}",
+    @GetMapping(value = "supplier",
             consumes = {ALL_VALUE, APPLICATION_JSON_VALUE},
             produces = APPLICATION_JSON_VALUE)
-    public ProductResponse update(@RequestBody ProductRequest request, @PathVariable Integer id) {
-        return product.update(request, id);
-    }
+    List<ProductResponse> findBySupplierId(@RequestParam Integer supplierId);
 
-    @DeleteMapping(value = "{id}",
+    @PutMapping(
             consumes = {ALL_VALUE, APPLICATION_JSON_VALUE},
             produces = APPLICATION_JSON_VALUE)
-    public SuccessResponse delete(@PathVariable Integer id) {
-        return product.delete(id);
-    }
+    ProductResponse updateProduct(@RequestBody ProductRequest request, @RequestParam Integer id);
+
+    @DeleteMapping(
+            consumes = {ALL_VALUE, APPLICATION_JSON_VALUE},
+            produces = APPLICATION_JSON_VALUE)
+    SuccessResponse deleteProduct(@RequestParam Integer id);
 
     @PostMapping(value = "check-stock",
             consumes = {ALL_VALUE, APPLICATION_JSON_VALUE},
             produces = APPLICATION_JSON_VALUE)
-    public SuccessResponse checkProductStock(@RequestBody ProductCheckStockRequest request) {
-        return product.checkProductsStock(request);
-    }
+    SuccessResponse checkProductStock(@RequestBody ProductCheckStockRequest request);
 
     @GetMapping(value = "{id}/sales",
             consumes = {ALL_VALUE, APPLICATION_JSON_VALUE},
             produces = APPLICATION_JSON_VALUE)
-    public ProductSalesResponse findProductSales(@PathVariable Integer id) {
-        return product.findProductSales(id);
-    }
+    ProductSalesResponse findProductSales(@PathVariable Integer id);
 }

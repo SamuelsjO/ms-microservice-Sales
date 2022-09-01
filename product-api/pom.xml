@@ -162,7 +162,6 @@
 								</contact>
 							</info>
 							<schemes>
-								<scheme>https</scheme>
 								<scheme>http</scheme>
 							</schemes>
 							<securityDefinitions>
@@ -173,7 +172,7 @@
 								</securityDefinition>
 							</securityDefinitions>
 							<host>localhost:8081</host>
-							<basePath>/</basePath>
+							<basePath>/api</basePath>
 							<locations>
 								<location>br.com.samuel.productapi.*</location>
 							</locations>
