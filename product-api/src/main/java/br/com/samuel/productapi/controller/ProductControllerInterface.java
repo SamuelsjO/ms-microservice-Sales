@@ -25,17 +25,17 @@ public interface ProductControllerInterface {
             produces = APPLICATION_JSON_VALUE)
     ProductResponse saveProduct(@RequestBody ProductRequest request);
 
-    @GetMapping(
+    @GetMapping(value = "id",
             consumes = {ALL_VALUE, APPLICATION_JSON_VALUE},
             produces = APPLICATION_JSON_VALUE)
-    ProductResponse findByIdProducts(@RequestParam Integer id);
+    ProductResponse findByIdProducts(@RequestParam Integer productId);
 
     @GetMapping( value = "allProducts",
             consumes = {ALL_VALUE, APPLICATION_JSON_VALUE},
             produces = APPLICATION_JSON_VALUE)
     public List<ProductResponse> findAllProducts();
 
-    @GetMapping(value = "name",
+    @GetMapping(
             consumes = {ALL_VALUE, APPLICATION_JSON_VALUE},
             produces = APPLICATION_JSON_VALUE)
     List<ProductResponse> findByNameProductIgnoreCaseContaining(@RequestParam String name);

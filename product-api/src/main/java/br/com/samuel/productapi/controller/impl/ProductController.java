@@ -26,8 +26,8 @@ public class ProductController implements ProductControllerInterface {
     }
 
     @Override
-    public ProductResponse findByIdProducts(Integer id) {
-        return product.findByIdResponse(id);
+    public ProductResponse findByIdProducts(Integer productId) {
+        return product.findByIdResponse(productId);
     }
 
     @Override
@@ -42,6 +42,7 @@ public class ProductController implements ProductControllerInterface {
 
     @Override
     public List<ProductResponse> findByCategoryId(Integer categoryId) {
+
         return product.findByCategoryId(categoryId);
     }
 

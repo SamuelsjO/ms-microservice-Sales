@@ -26,7 +26,7 @@ import static springfox.documentation.swagger.web.ApiKeyVehicle.HEADER;
 public class SwaggerConfig extends DelegatingWebMvcConfiguration {
 
     private static final String API_KEY_NAME = "jwt";
-    private static final String AUTHORIZATION_HEADER = "AUTHORIZATION";
+    private static final String AUTHORIZATION = "AUTHORIZATION";
     private final String emailContact;
     private final String licenseName;
     private final String licenseUrl;
@@ -94,7 +94,7 @@ public class SwaggerConfig extends DelegatingWebMvcConfiguration {
     }
 
     private ApiKey apiKey() {
-        return new ApiKey(API_KEY_NAME, AUTHORIZATION_HEADER, HEADER.name());
+        return new ApiKey(API_KEY_NAME, AUTHORIZATION, HEADER.name());
     }
 
     private SecurityContext securityContext() {
