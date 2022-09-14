@@ -1,0 +1,60 @@
+{
+	"id": "a2becdf5-af4d-6d0e-c504-cd1f3eca14ac",
+	"name": "Auth",
+	"description": "",
+	"order": [
+		"eb1b42d3-edfd-6fcd-e264-b0cd0db25e7f",
+		"77378936-e5f3-3775-5c1d-c8609fa369c4"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1660774682828,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "77378936-e5f3-3775-5c1d-c8609fa369c4",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:3332/api/v1/authToken",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1660775095240,
+			"name": "auth create",
+			"description": "",
+			"collectionId": "a2becdf5-af4d-6d0e-c504-cd1f3eca14ac",
+			"responses": []
+		},
+		{
+			"id": "eb1b42d3-edfd-6fcd-e264-b0cd0db25e7f",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:3332/api/v1/authToken",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1660775095240,
+			"name": "authUser",
+			"description": "",
+			"collectionId": "a2becdf5-af4d-6d0e-c504-cd1f3eca14ac",
+			"responses": []
+		}
+	]
+}

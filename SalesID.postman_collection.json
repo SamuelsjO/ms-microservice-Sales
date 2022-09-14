@@ -1,0 +1,45 @@
+{
+	"id": "ced32b00-d5a3-7251-5185-8fac9f8b7ece",
+	"name": "SalesID",
+	"description": "",
+	"order": [
+		"c398cd8a-c11a-0ce6-1af9-f2dde45c83f8"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1660773697107,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "c398cd8a-c11a-0ce6-1af9-f2dde45c83f8",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8083/api/order",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1660773782903,
+			"name": "Add Order",
+			"description": "",
+			"collectionId": "ced32b00-d5a3-7251-5185-8fac9f8b7ece",
+			"responses": [],
+			"rawModeData": "{\r\n        \"products\":[\r\n        {\r\n         \"productId\":100,\r\n         \"quantity\":4\r\n        },\r\n        {\r\n         \"productId\":101,\r\n         \"quantity\":2\r\n        }\r\n        ],\r\n        \"user\":{\r\n        \"id\":\"12dij1873j*(kk\",\r\n        \"name\":\"dbIniti\",\r\n        \"email\":\"dbInit@gmail.com\"\r\n        },\r\n        \"status\":\"PENDING\",\r\n        \"createdAt\":\"12-12-2009\",\r\n        \"updatedAt\":\"12-05-2015\"\r\n}"
+		}
+	]
+}

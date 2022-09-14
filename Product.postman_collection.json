@@ -1,0 +1,303 @@
+{
+	"id": "4d123f34-158c-c12c-cb71-0109b9e3d78d",
+	"name": "Product",
+	"description": "",
+	"order": [
+		"56683ef0-2297-015c-078a-67fa3f0f6fb6",
+		"c4ebf133-3a93-d725-cf0f-ecf74651db43",
+		"6219a4e8-0b07-323c-807f-ab510a58e9f0",
+		"4048f7d5-ae8d-714f-9c4a-8a116679dcdf",
+		"477455c4-c9b1-2f3f-ddf5-32319da91bf8",
+		"4dd297ea-0037-8430-bafd-6415beb4d07f",
+		"e72aaa1a-daf0-aab1-81e1-23664671c784",
+		"f42ccb4a-c6ec-98a8-04e5-c24f94736a31",
+		"bb8b2fe1-3edd-90d4-7a0a-e44b53509357"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1661990551387,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "4048f7d5-ae8d-714f-9c4a-8a116679dcdf",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlNhbXVlbCIsImVtYWlsIjoic2FtdWVsQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjMxMTM1MDksImV4cCI6MTY2MzE5OTkwOX0.hkRto4vIQ6K22aoU4B_s0defUKEg4C2NN5wp-QYdsbM\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlNhbXVlbCIsImVtYWlsIjoic2FtdWVsQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjMxMTM1MDksImV4cCI6MTY2MzE5OTkwOX0.hkRto4vIQ6K22aoU4B_s0defUKEg4C2NN5wp-QYdsbM",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8081/v1/api/product/1000",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1663114350227,
+			"name": "Busca pelo nome",
+			"description": "",
+			"collectionId": "4d123f34-158c-c12c-cb71-0109b9e3d78d",
+			"responses": [],
+			"rawModeData": "{\n\t\"id\" : 1000\n}"
+		},
+		{
+			"id": "477455c4-c9b1-2f3f-ddf5-32319da91bf8",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlNhbXVlbCIsImVtYWlsIjoic2FtdWVsQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjMxMTM1MDksImV4cCI6MTY2MzE5OTkwOX0.hkRto4vIQ6K22aoU4B_s0defUKEg4C2NN5wp-QYdsbM\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlNhbXVlbCIsImVtYWlsIjoic2FtdWVsQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjMxMTM1MDksImV4cCI6MTY2MzE5OTkwOX0.hkRto4vIQ6K22aoU4B_s0defUKEg4C2NN5wp-QYdsbM",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8081/v1/api/product/1000",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1663114350227,
+			"name": "Busca pela category",
+			"description": "",
+			"collectionId": "4d123f34-158c-c12c-cb71-0109b9e3d78d",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "4048f7d5-ae8d-714f-9c4a-8a116679dcdf",
+			"rawModeData": "{\n\t\"id\" : 1000\n}"
+		},
+		{
+			"id": "4dd297ea-0037-8430-bafd-6415beb4d07f",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlNhbXVlbCIsImVtYWlsIjoic2FtdWVsQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjMxMTM1MDksImV4cCI6MTY2MzE5OTkwOX0.hkRto4vIQ6K22aoU4B_s0defUKEg4C2NN5wp-QYdsbM\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlNhbXVlbCIsImVtYWlsIjoic2FtdWVsQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjMxMTM1MDksImV4cCI6MTY2MzE5OTkwOX0.hkRto4vIQ6K22aoU4B_s0defUKEg4C2NN5wp-QYdsbM",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8081/v1/api/product/1000",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1663114350227,
+			"name": "Busca pela supplier",
+			"description": "",
+			"collectionId": "4d123f34-158c-c12c-cb71-0109b9e3d78d",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "477455c4-c9b1-2f3f-ddf5-32319da91bf8",
+			"rawModeData": "{\n\t\"id\" : 1000\n}"
+		},
+		{
+			"id": "56683ef0-2297-015c-078a-67fa3f0f6fb6",
+			"headers": "",
+			"headerData": [],
+			"url": "",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "4d123f34-158c-c12c-cb71-0109b9e3d78d",
+			"data": null,
+			"dataMode": "params",
+			"name": "Status",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1661990571777,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "6219a4e8-0b07-323c-807f-ab510a58e9f0",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlNhbXVlbCIsImVtYWlsIjoic2FtdWVsQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjMxMTM1MDksImV4cCI6MTY2MzE5OTkwOX0.hkRto4vIQ6K22aoU4B_s0defUKEg4C2NN5wp-QYdsbM\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlNhbXVlbCIsImVtYWlsIjoic2FtdWVsQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjMxMTM1MDksImV4cCI6MTY2MzE5OTkwOX0.hkRto4vIQ6K22aoU4B_s0defUKEg4C2NN5wp-QYdsbM",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8081/v1/api/product/1000",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1663114350227,
+			"name": "Busca todos produtos pelo id",
+			"description": "",
+			"collectionId": "4d123f34-158c-c12c-cb71-0109b9e3d78d",
+			"responses": [],
+			"rawModeData": "{\n\t\"id\" : 1000\n}"
+		},
+		{
+			"id": "bb8b2fe1-3edd-90d4-7a0a-e44b53509357",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlNhbXVlbCIsImVtYWlsIjoic2FtdWVsQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjMxMTM1MDksImV4cCI6MTY2MzE5OTkwOX0.hkRto4vIQ6K22aoU4B_s0defUKEg4C2NN5wp-QYdsbM\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlNhbXVlbCIsImVtYWlsIjoic2FtdWVsQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjMxMTM1MDksImV4cCI6MTY2MzE5OTkwOX0.hkRto4vIQ6K22aoU4B_s0defUKEg4C2NN5wp-QYdsbM",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8081/v1/api/product/check-stock",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1663117973566,
+			"name": "check stok",
+			"description": "",
+			"collectionId": "4d123f34-158c-c12c-cb71-0109b9e3d78d",
+			"responses": [],
+			"rawModeData": "{\n\t\"products\": [{\n\t\t\"productId\" : 1001,\n\t\t\"quantity\": 4\n\t}]\n}"
+		},
+		{
+			"id": "c4ebf133-3a93-d725-cf0f-ecf74651db43",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlNhbXVlbCIsImVtYWlsIjoic2FtdWVsQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjMxMTM1MDksImV4cCI6MTY2MzE5OTkwOX0.hkRto4vIQ6K22aoU4B_s0defUKEg4C2NN5wp-QYdsbM\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlNhbXVlbCIsImVtYWlsIjoic2FtdWVsQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjMxMTM1MDksImV4cCI6MTY2MzE5OTkwOX0.hkRto4vIQ6K22aoU4B_s0defUKEg4C2NN5wp-QYdsbM",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8081/v1/api/product/allProducts",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1663113580163,
+			"name": "Busca todos produtos ALL",
+			"description": "",
+			"collectionId": "4d123f34-158c-c12c-cb71-0109b9e3d78d",
+			"responses": []
+		},
+		{
+			"id": "e72aaa1a-daf0-aab1-81e1-23664671c784",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlNhbXVlbCIsImVtYWlsIjoic2FtdWVsQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjMxMTM1MDksImV4cCI6MTY2MzE5OTkwOX0.hkRto4vIQ6K22aoU4B_s0defUKEg4C2NN5wp-QYdsbM\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlNhbXVlbCIsImVtYWlsIjoic2FtdWVsQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjMxMTM1MDksImV4cCI6MTY2MzE5OTkwOX0.hkRto4vIQ6K22aoU4B_s0defUKEg4C2NN5wp-QYdsbM",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8081/v1/api/product/?id=1000",
+			"queryParams": [
+				{
+					"key": "id",
+					"value": "1000",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1663117590532,
+			"name": "Busca pela supplier copy",
+			"description": "",
+			"collectionId": "4d123f34-158c-c12c-cb71-0109b9e3d78d",
+			"responses": [],
+			"rawModeData": "{\n\t\"id\" : 1000\n}"
+		},
+		{
+			"id": "f42ccb4a-c6ec-98a8-04e5-c24f94736a31",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlNhbXVlbCIsImVtYWlsIjoic2FtdWVsQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjMxMTM1MDksImV4cCI6MTY2MzE5OTkwOX0.hkRto4vIQ6K22aoU4B_s0defUKEg4C2NN5wp-QYdsbM\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlNhbXVlbCIsImVtYWlsIjoic2FtdWVsQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjMxMTM1MDksImV4cCI6MTY2MzE5OTkwOX0.hkRto4vIQ6K22aoU4B_s0defUKEg4C2NN5wp-QYdsbM",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8081/v1/api/product/1000/sales",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1663117720504,
+			"name": "Busca pelo id sales",
+			"description": "",
+			"collectionId": "4d123f34-158c-c12c-cb71-0109b9e3d78d",
+			"responses": [],
+			"rawModeData": "{\n\t\"id\" : 1000\n}"
+		}
+	]
+}
